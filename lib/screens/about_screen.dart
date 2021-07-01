@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 
 const kAboutTextStyle = TextStyle(
   fontSize: 20.0,

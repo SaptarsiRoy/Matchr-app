@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:matchr_docker_app/components/login_button.dart';
 import 'package:matchr_docker_app/screens/home_screen.dart';
-import 'package:matchr_docker_app/screens/login_screen.dart';
 
 class RegistrationScreen extends StatelessWidget {
   static const String id = 'RegistrationScreen';
