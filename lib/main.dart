@@ -5,6 +5,7 @@ import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 import 'package:matchr_docker_app/screens/home_screen.dart';
 import 'package:matchr_docker_app/screens/log_screen.dart';
 import 'package:matchr_docker_app/screens/login_screen.dart';
+import 'package:matchr_docker_app/screens/registration_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.green.shade200,
         hintColor: Colors.black45,
       ),
-      initialRoute: ContainerScreen.id,
+      initialRoute: LogScreen.id,
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         HomeScreen.id: (context) => HomeScreen(),
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         DockerfileScreen.id: (context) => DockerfileScreen(),
         AboutScreen.id: (context) => AboutScreen(),
         LogScreen.id: (context) => LogScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
       },
     );
   }
