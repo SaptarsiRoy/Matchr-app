@@ -14,6 +14,11 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                child: Image.network('https://logodix.com/logo/826727.png'),
+                width: 200,
+                height: 200,
+              ),
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) {
