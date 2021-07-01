@@ -54,8 +54,10 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Container(
-            child: Image.network(
-                'https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2014/05/homepage-docker-logo.png?itok=zx0e-vcP'),
+            child: Hero(
+              tag: 'logo',
+              child: Image.asset('images/docker logo.png'),
+            ),
             alignment: Alignment.topCenter,
             width: 500,
             height: 200,

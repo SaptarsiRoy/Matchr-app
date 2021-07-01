@@ -10,62 +10,73 @@ class RegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(
-                10.0,
+        child: Container(
+          width: 300.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: Hero(
+                  tag: 'logo',
+                  child: Image.asset('images/docker logo.png'),
+                ),
+                width: 200,
+                height: 200,
               ),
-              child: TextField(
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (value) {
-                  // email = value;
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter Email",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+              Padding(
+                padding: const EdgeInsets.all(
+                  10.0,
+                ),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) {
+                    // email = value;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Enter Email",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                obscureText: true,
-                onChanged: (value) {
-                  // password = value;
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter Password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextField(
+                  obscureText: true,
+                  onChanged: (value) {
+                    // password = value;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Enter Password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                LoginButton(
-                    buttonTitle: 'Login',
-                    onPressed: () {
-                      Navigator.pushNamed(context, LoginScreen.id);
-                    }),
-                LoginButton(
-                    buttonTitle: 'Register Now',
-                    onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
-                    }),
-              ],
-            ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  LoginButton(
+                      buttonTitle: 'Login',
+                      onPressed: () {
+                        Navigator.pushNamed(context, LoginScreen.id);
+                      }),
+                  LoginButton(
+                      buttonTitle: 'Register Now',
+                      onPressed: () {
+                        Navigator.pushNamed(context, HomeScreen.id);
+                      }),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

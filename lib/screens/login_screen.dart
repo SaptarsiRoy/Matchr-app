@@ -15,7 +15,10 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                child: Image.network('https://logodix.com/logo/826727.png'),
+                child: Hero(
+                  tag: 'logo',
+                  child: Image.asset('images/docker logo.png'),
+                ),
                 width: 200,
                 height: 200,
               ),
