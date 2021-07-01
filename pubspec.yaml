@@ -64,7 +64,7 @@ flutter:
   fonts:
     - family: Courier New
       fonts:
-        - asset: fonts/cour.tff
+        - asset: fonts/cour.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
