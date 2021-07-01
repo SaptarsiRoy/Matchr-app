@@ -1,10 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
+
+const kAboutTextStyle = TextStyle(
+  fontSize: 20.0,
+  fontFamily: 'Courier New',
+  color: Colors.white,
+);
 
 class AboutScreen extends StatelessWidget {
   static const String id = 'AboutScreen';
+  final List<Text> _aboutText = [
+    Text(
+      'This app is used to run remote docker commands inside a virtual machine running in AWS.',
+      style: kAboutTextStyle,
+    ),
+    Text('\n\n'),
+    Text(
+      'To create a docker container using pre-existing docker image, the user needs to click on "Create new container" button, input the desired values for the same and click on Create. The app will redirect itself to the terminal screen for the output.',
+      style: kAboutTextStyle,
+    ),
+    Text('\n\n'),
+    Text(
+      'This app also allows its users to create a customised docker image and tag it. For the same, users need to click on "Create new image" button.',
+      style: kAboutTextStyle,
+    ),
+    Text(
+      'On redirection to the significant screen, the user needs to enter the accessible URL of the Dockerfile uploaded to DRIVE/CLOUD STORAGE along with the image name and its tag.',
+      style: kAboutTextStyle,
+    ),
+    Text(
+      'On clicking the create button, the terminal output screen would be generated.',
+      style: kAboutTextStyle,
+    ),
+    Text('\n\n'),
+    Text(
+      'To list down all the containers that are running on live server, user needs to just click on "List All Containers" button and look for in the output screen.',
+      style: kAboutTextStyle,
+    ),
+    Text('\n\n'),
+    Text(
+      'The app can be used either as a playgroupnd application for Docker, or just to access Docker in an user-friendly way!\n\nHAPPY DOCKER! :)',
+      style: kAboutTextStyle,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
@@ -12,19 +55,14 @@ class AboutScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          color: Colors.black,
-          child: Text(
-            'This app is used to run remote docker commands inside a virtual machine running in AWS.\n\nTo create a docker container using pre-existing docker image, the user needs to click on "Create new container" button, input the desired values for the same and click on Create. The app will redirect itself to the terminal screen for the output.\n\nThis app also allows its users to create a customised docker image and tag it. For the same, users need to click on "Create new image". On redirection to the significant screen, the user needs to enter the accessible URL of the Dockerfile uploaded to DRIVE/CLOUD STORAGE along with the image name and its tag. On clicking the create button, the terminal output screen would be generated.\n\nTo list down all the containers that are running on live server, user needs to just click on "List All Containers button" and look for in the output screen.\n\nThe app can be used either as a playgroupnd application for Docker, or just to access Docker in an user-friendly way!\n\nHAPPY DOCKER! :)',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              color: Colors.white,
-              fontFamily: 'Courier New',
+        child: CustomScrollView(
+          slivers: [
+            SliverList(
+              delegate: SliverChildListDelegate(
+                _aboutText,
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
