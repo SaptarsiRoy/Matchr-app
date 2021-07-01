@@ -47,7 +47,6 @@ class ContainerScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
                 hintText: 'Enter name container image',
-                //labelText: 'imgName',
               ),
             ),
           ),
@@ -64,7 +63,9 @@ class ContainerScreen extends StatelessWidget {
                   ),
                   width: 150.0,
                   child: TextFormField(
-                    decoration: InputDecoration(hintText: 'From port'),
+                    decoration: InputDecoration(
+                      hintText: 'From port',
+                    ),
                   ),
                 ),
               ),

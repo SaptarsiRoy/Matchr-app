@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:matchr_docker_app/components/container_button.dart';
 import 'package:matchr_docker_app/screens/about_screen.dart';
 import 'package:matchr_docker_app/screens/container_screen.dart';
+import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'HomeScreen';
@@ -75,7 +76,7 @@ class HomeScreen extends StatelessWidget {
               ContainerButton(
                 buttonTitle: 'Upload a Dockerfile',
                 onPressed: () {
-                  Navigator.pushNamed(context, ContainerScreen.id);
+                  Navigator.pushNamed(context, DockerfileScreen.id);
                 },
               ),
             ],
