@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:matchr_docker_app/components/login_button.dart';
+import 'package:matchr_docker_app/screens/home_screen.dart';
+import 'package:matchr_docker_app/screens/login_screen.dart';
 
 class RegistrationScreen extends StatelessWidget {
   static const String id = 'RegistrationScreen';
@@ -48,16 +51,19 @@ class RegistrationScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Material(
-              color: Colors.lightBlueAccent,
-              borderRadius: BorderRadius.circular(10),
-              elevation: 10,
-              child: MaterialButton(
-                minWidth: 200,
-                height: 40,
-                child: Text('Register'),
-                onPressed: () async {},
-              ),
+            Row(
+              children: [
+                LoginButton(
+                    buttonTitle: 'Login',
+                    onPressed: () {
+                      Navigator.pushNamed(context, LoginScreen.id);
+                    }),
+                LoginButton(
+                    buttonTitle: 'Register Now',
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    }),
+              ],
             ),
           ],
         ),

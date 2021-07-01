@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:matchr_docker_app/components/login_button.dart';
+import 'package:matchr_docker_app/screens/home_screen.dart';
 import 'package:matchr_docker_app/screens/registration_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -49,41 +51,17 @@ class LoginScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.all(
-                      10.0,
-                    ),
-                    child: Material(
-                      color: Colors.lightBlueAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      elevation: 10,
-                      child: MaterialButton(
-                        minWidth: 50,
-                        height: 40,
-                        child: Text('Register Here'),
-                        onPressed: () async {
-                          Navigator.pushNamed(context, RegistrationScreen.id);
-                        },
-                      ),
-                    ),
+                  LoginButton(
+                    buttonTitle: 'Login',
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    },
                   ),
-                  Container(
-                    margin: EdgeInsets.all(
-                      10.0,
-                    ),
-                    child: Material(
-                      color: Colors.lightBlueAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      elevation: 10,
-                      child: MaterialButton(
-                        minWidth: 50,
-                        height: 40,
-                        child: Text('Register Here'),
-                        onPressed: () async {
-                          Navigator.pushNamed(context, RegistrationScreen.id);
-                        },
-                      ),
-                    ),
+                  LoginButton(
+                    buttonTitle: 'Register Here',
+                    onPressed: () {
+                      Navigator.pushNamed(context, RegistrationScreen.id);
+                    },
                   ),
                 ],
               ),
