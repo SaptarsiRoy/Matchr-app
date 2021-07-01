@@ -72,7 +72,7 @@ class RegistrationScreen extends StatelessWidget {
                   LoginButton(
                       buttonTitle: 'Login',
                       onPressed: () {
-                        Navigator.pushNamed(context, LoginScreen.id);
+                        Navigator.pop(context);
                       }),
                   LoginButton(
                       buttonTitle: 'Register Now',
