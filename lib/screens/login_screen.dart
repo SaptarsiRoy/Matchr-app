@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchr_docker_app/screens/registration_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String id = 'LoginScreen';
@@ -46,16 +47,45 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Material(
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(10),
-                elevation: 10,
-                child: MaterialButton(
-                  minWidth: 200,
-                  height: 40,
-                  child: Text('Login'),
-                  onPressed: () async {},
-                ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(
+                      10.0,
+                    ),
+                    child: Material(
+                      color: Colors.lightBlueAccent,
+                      borderRadius: BorderRadius.circular(10),
+                      elevation: 10,
+                      child: MaterialButton(
+                        minWidth: 50,
+                        height: 40,
+                        child: Text('Register Here'),
+                        onPressed: () async {
+                          Navigator.pushNamed(context, RegistrationScreen.id);
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(
+                      10.0,
+                    ),
+                    child: Material(
+                      color: Colors.lightBlueAccent,
+                      borderRadius: BorderRadius.circular(10),
+                      elevation: 10,
+                      child: MaterialButton(
+                        minWidth: 50,
+                        height: 40,
+                        child: Text('Register Here'),
+                        onPressed: () async {
+                          Navigator.pushNamed(context, RegistrationScreen.id);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

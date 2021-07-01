@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.green.shade200,
         hintColor: Colors.black45,
       ),
-      initialRoute: LogScreen.id,
+      initialRoute: AboutScreen.id,
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         HomeScreen.id: (context) => HomeScreen(),
