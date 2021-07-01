@@ -9,19 +9,28 @@ class DockerfileScreen extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
-          child: Text('Docker App'),
+          child: Text('Create New Customised Image'),
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Container(
+            child: Image.network(
+                'https://miro.medium.com/max/300/1*7rytrdWuar1l7oaR7CWhXA.jpeg'),
+            width: 200,
+            height: 200,
+          ),
+          SizedBox(
+            height: 20,
+          ),
           TextFormField(
             decoration: InputDecoration(
               icon: Icon(
                 FontAwesomeIcons.file,
                 color: Colors.black,
               ),
-              hintText: 'Enter Url of dockerfile',
+              hintText: 'Paste the URL to dockerfile',
             ),
           ),
           SizedBox(

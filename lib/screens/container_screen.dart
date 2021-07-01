@@ -8,7 +8,7 @@ class ContainerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Docker App'),
+          child: Text('Create New Container'),
         ),
       ),
       body: ListView(
@@ -18,8 +18,8 @@ class ContainerScreen extends StatelessWidget {
               child: Image.network(
                   'https://www.mobilise.cloud/wp-content/uploads/2021/02/Alternatives-to-Docker-Container-1.png'),
               //alignment: Alignment.center,
-              width: 200,
-              height: 200,
+              width: 300,
+              height: 300,
             ),
           ),
           Padding(
