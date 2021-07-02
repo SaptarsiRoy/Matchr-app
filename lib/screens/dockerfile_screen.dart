@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
+import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
 class DockerfileScreen extends StatelessWidget {
   static const String id = 'DockerfileScreen';
+  late final String url, imgName, tagName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
         title: Center(
           child: Text('Create New Customised Image'),
         ),
       ),
+      drawer: AppDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            child: Image.network(
-                'https://miro.medium.com/max/300/1*7rytrdWuar1l7oaR7CWhXA.jpeg'),
-            width: 200,
+            child: Image.asset('images/dockerfile.png'),
+            width: 300,
             height: 200,
           ),
           SizedBox(
@@ -32,17 +36,24 @@ class DockerfileScreen extends StatelessWidget {
               ),
               hintText: 'Paste the URL to dockerfile',
             ),
+            onChanged: (value) {
+              url = value;
+            },
           ),
           SizedBox(
             height: 20,
           ),
           TextFormField(
             decoration: InputDecoration(
-                icon: Icon(
-                  FontAwesomeIcons.info,
-                  color: Colors.black,
-                ),
-                hintText: 'Enter Image Name'),
+              icon: Icon(
+                FontAwesomeIcons.info,
+                color: Colors.black,
+              ),
+              hintText: 'Enter Image Name',
+            ),
+            onChanged: (value) {
+              imgName = value;
+            },
           ),
           SizedBox(
             height: 20,
@@ -54,13 +65,35 @@ class DockerfileScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
                 hintText: 'Enter Image Tag'),
+            onChanged: (value) {
+              tagName = value;
+            },
           ),
           SizedBox(
             height: 30,
           ),
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                NetworkHelper networkHelper = NetworkHelper();
+                try {
+                  var text = await networkHelper.createImage(
+                    imgUrl: url,
+                    imgName: imgName,
+                    imgTag: tagName,
+                  );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogScreen(
+                        logOutput: text,
+                      ),
+                    ),
+                  );
+                } catch (e) {
+                  print(e);
+                }
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(

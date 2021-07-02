@@ -3,6 +3,8 @@ import 'package:matchr_docker_app/components/container_button.dart';
 import 'package:matchr_docker_app/screens/about_screen.dart';
 import 'package:matchr_docker_app/screens/container_screen.dart';
 import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
+import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'HomeScreen';
@@ -71,13 +73,13 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ContainerButton(
-                buttonTitle: 'Create a Container',
+                buttonTitle: 'Create A Container',
                 onPressed: () {
                   Navigator.pushNamed(context, ContainerScreen.id);
                 },
               ),
               ContainerButton(
-                buttonTitle: 'Upload a Dockerfile',
+                buttonTitle: 'Create Cutomised Image',
                 onPressed: () {
                   Navigator.pushNamed(context, DockerfileScreen.id);
                 },
@@ -90,9 +92,22 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ContainerButton(
-                buttonTitle: 'List all containers',
-                onPressed: () {
-                  Navigator.pushNamed(context, ContainerScreen.id);
+                buttonTitle: 'List All Containers',
+                onPressed: () async {
+                  NetworkHelper networkHelper = NetworkHelper();
+                  try {
+                    var text = await networkHelper.getContainers();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LogScreen(
+                          logOutput: text,
+                        ),
+                      ),
+                    );
+                  } catch (e) {
+                    print(e);
+                  }
                 },
               ),
             ],

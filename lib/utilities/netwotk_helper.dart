@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 class NetworkHelper {
-  final String url = "";
+  final String url = "http://13.233.164.87/cgi-bin/";
   Future<String> runContainer(
       {required String osName,
       required String imgName,

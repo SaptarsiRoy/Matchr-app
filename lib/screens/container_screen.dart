@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
 class ContainerScreen extends StatelessWidget {
   static const String id = 'ContainerScreen';
+  late final String osName, imageName;
+  late final int fromPort, toPort;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +20,7 @@ class ContainerScreen extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              child: Image.network(
-                  'https://www.mobilise.cloud/wp-content/uploads/2021/02/Alternatives-to-Docker-Container-1.png'),
-              //alignment: Alignment.center,
+              child: Image.asset('images/docker-container.png'),
               width: 300,
               height: 300,
             ),
@@ -32,8 +34,10 @@ class ContainerScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
                 hintText: 'Enter name of your container',
-                //labelText: 'contName',
               ),
+              onChanged: (value) {
+                imageName = value;
+              },
             ),
           ),
           SizedBox(
@@ -49,6 +53,9 @@ class ContainerScreen extends StatelessWidget {
                 ),
                 hintText: 'Enter name container image',
               ),
+              onChanged: (value) {
+                osName = value;
+              },
             ),
           ),
           SizedBox(
@@ -67,6 +74,9 @@ class ContainerScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'From port',
                     ),
+                    onChanged: (value) {
+                      fromPort = int.parse(value);
+                    },
                   ),
                 ),
               ),
@@ -80,6 +90,9 @@ class ContainerScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: 'To port',
                     ),
+                    onChanged: (value) {
+                      toPort = int.parse(value);
+                    },
                   ),
                 ),
               ),
@@ -90,7 +103,28 @@ class ContainerScreen extends StatelessWidget {
           ),
           Center(
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                NetworkHelper networkHelper = NetworkHelper();
+                try {
+                  var text = await networkHelper.runContainer(
+                    osName: osName,
+                    imgName: imageName,
+                    fromPort: fromPort,
+                    toPort: toPort,
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogScreen(
+                        logOutput: text,
+                      ),
+                    ),
+                  );
+                } catch (e) {
+                  print(e);
+                }
+              },
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
