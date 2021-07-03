@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
 
 class LogScreen extends StatefulWidget {
   static const String id = 'LogScreen';
@@ -14,11 +15,11 @@ class _LogScreenState extends State<LogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Center(
           child: Text('Terminal Output'),
         ),
       ),
+      drawer: AppDrawer(),
       body: Center(
         child: Container(
           height: double.maxFinite,
@@ -28,7 +29,7 @@ class _LogScreenState extends State<LogScreen> {
             widget.logOutput,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 15,
               color: Colors.white,
               fontFamily: 'Courier New',
             ),

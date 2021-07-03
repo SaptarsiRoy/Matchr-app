@@ -4,6 +4,7 @@ import 'package:matchr_docker_app/screens/about_screen.dart';
 import 'package:matchr_docker_app/screens/container_screen.dart';
 import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
 import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,11 +13,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Center(
           child: Text('Docker App'),
         ),
       ),
+      drawer: AppDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

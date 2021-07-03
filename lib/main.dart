@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.green.shade200,
         hintColor: Colors.black45,
       ),
-      initialRoute: DockerfileScreen.id,
+      initialRoute: LoginScreen.id,
       routes: {
         LoginScreen.id: (context) => LoginScreen(),
         HomeScreen.id: (context) => HomeScreen(),

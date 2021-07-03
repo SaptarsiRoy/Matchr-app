@@ -20,6 +20,16 @@ class RegistrationScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'DOCKER APP',
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontFamily: 'Courier New',
+                  fontSize: 40.0,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Container(
                 child: Hero(
                   tag: 'logo',
