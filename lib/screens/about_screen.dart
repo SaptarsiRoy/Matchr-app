@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
 
 const kAboutTextStyle = TextStyle(
   fontSize: 20.0,
@@ -48,11 +49,11 @@ class AboutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Center(
           child: Text('How to Use?'),
         ),
       ),
+      drawer: AppDrawer(),
       body: Center(
         child: CustomScrollView(
           slivers: [
