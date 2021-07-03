@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
 import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
-class ContainerScreen extends StatelessWidget {
+class ContainerScreen extends StatefulWidget {
   static const String id = 'ContainerScreen';
-  late final String osName, imageName;
-  late final int fromPort, toPort;
+
+  @override
+  _ContainerScreenState createState() => _ContainerScreenState();
+}
+
+class _ContainerScreenState extends State<ContainerScreen> {
+  late String osName, imageName, toPort, fromPort;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         title: Center(
           child: Text('Create New Container'),
         ),
       ),
+      drawer: AppDrawer(),
       body: ListView(
         children: [
           Center(
@@ -28,6 +35,9 @@ class ContainerScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 20.0, right: 20.0),
             child: TextFormField(
+              style: TextStyle(
+                color: Colors.black,
+              ),
               decoration: InputDecoration(
                 icon: Icon(
                   FontAwesomeIcons.cubes,
@@ -46,6 +56,9 @@ class ContainerScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 20.0, right: 20.0),
             child: TextFormField(
+              style: TextStyle(
+                color: Colors.black,
+              ),
               decoration: InputDecoration(
                 icon: Icon(
                   FontAwesomeIcons.info,
@@ -71,11 +84,14 @@ class ContainerScreen extends StatelessWidget {
                   ),
                   width: 150.0,
                   child: TextFormField(
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                     decoration: InputDecoration(
                       hintText: 'From port',
                     ),
                     onChanged: (value) {
-                      fromPort = int.parse(value);
+                      fromPort = value;
                     },
                   ),
                 ),
@@ -87,11 +103,14 @@ class ContainerScreen extends StatelessWidget {
                   ),
                   width: 100.0,
                   child: TextFormField(
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                     decoration: InputDecoration(
                       hintText: 'To port',
                     ),
                     onChanged: (value) {
-                      toPort = int.parse(value);
+                      toPort = value;
                     },
                   ),
                 ),

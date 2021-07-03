@@ -4,9 +4,16 @@ import 'package:matchr_docker_app/components/app_drawer.dart';
 import 'package:matchr_docker_app/screens/log_screen.dart';
 import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 
-class DockerfileScreen extends StatelessWidget {
+class DockerfileScreen extends StatefulWidget {
   static const String id = 'DockerfileScreen';
+
+  @override
+  _DockerfileScreenState createState() => _DockerfileScreenState();
+}
+
+class _DockerfileScreenState extends State<DockerfileScreen> {
   late final String url, imgName, tagName;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
