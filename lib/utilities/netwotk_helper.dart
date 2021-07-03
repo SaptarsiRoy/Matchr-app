@@ -7,7 +7,9 @@ class NetworkHelper {
       required String imgName,
       required int fromPort,
       required int toPort}) async {
-    http.Response response = await http.get(Uri.parse(url));
+    String createContianerUrl = url +
+        'create_container.py?os={osName}&image={imgName}&from={formPort}&to={toPort}';
+    http.Response response = await http.get(Uri.parse(createContianerUrl));
     if (response.statusCode == 200) {
       String data = response.body;
       return data;
@@ -20,6 +22,8 @@ class NetworkHelper {
       {required String imgUrl,
       required String imgName,
       required String imgTag}) async {
+    String createImageUrl =
+        url + 'create_image.py?url={imgUrl}&img={imgName}&tag={imgTag}';
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       String data = response.body;

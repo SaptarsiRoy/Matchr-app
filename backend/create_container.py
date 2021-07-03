@@ -13,5 +13,5 @@ fromPort = field.getvalue("from")
 toPort = field.getValue("to")
 
 output = subprocess.getoutput(
-    "sudo docker run -it --name " + osName + imageName + "-p " + fromPort + ":" + toPort)
+    f"sudo docker run -d -p {fromPort}:{toPort} --name {osName} {imageName}")
 print(output)
