@@ -3,7 +3,7 @@ import 'package:matchr_docker_app/components/app_drawer.dart';
 
 class LogScreen extends StatefulWidget {
   static const String id = 'LogScreen';
-  String logOutput;
+  final String logOutput;
   LogScreen({required this.logOutput});
 
   @override
@@ -20,21 +20,25 @@ class _LogScreenState extends State<LogScreen> {
         ),
       ),
       drawer: AppDrawer(),
-      body: Center(
-        child: Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          color: Colors.black,
-          child: Text(
-            widget.logOutput,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-              color: Colors.white,
-              fontFamily: 'Courier New',
+      body: Container(
+        color: Colors.black,
+        child: ListView(children: [
+          Center(
+            child: Container(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: Text(
+                widget.logOutput,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontFamily: 'Courier New',
+                ),
+              ),
             ),
           ),
-        ),
+        ]),
       ),
     );
   }

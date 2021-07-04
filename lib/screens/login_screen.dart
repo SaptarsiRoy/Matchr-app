@@ -14,79 +14,88 @@ class LoginScreen extends StatelessWidget {
           child: Text('Login'),
         ),
       ),
-      body: Center(
-        child: Container(
-          width: 300,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'DOCKER APP',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontFamily: 'Courier New',
-                  fontSize: 40.0,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Container(
-                child: Hero(
-                  tag: 'logo',
-                  child: Image.asset('images/docker logo.png'),
-                ),
-                width: 200,
-                height: 200,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (value) {
-                  // email = value;
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter Email",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+      body: ListView(
+        children: [
+          Center(
+            child: Container(
+              width: 300,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Text(
+                      'DOCKER APP',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontFamily: 'Courier New',
+                        fontSize: 30.0,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                obscureText: true,
-                onChanged: (value) {
-                  // password = value;
-                },
-                decoration: InputDecoration(
-                  hintText: "Enter Password",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                  Container(
+                    child: Hero(
+                      tag: 'logo',
+                      child: Image.asset('images/docker logo.png'),
+                    ),
+                    width: 1500,
+                    height: 150,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  LoginButton(
-                    buttonTitle: 'Login',
-                    onPressed: () {
-                      Navigator.pushNamed(context, HomeScreen.id);
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      // email = value;
                     },
+                    decoration: InputDecoration(
+                      hintText: "Enter Email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
                   ),
-                  LoginButton(
-                    buttonTitle: 'Register Here',
-                    onPressed: () {
-                      Navigator.pushNamed(context, RegistrationScreen.id);
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextField(
+                    obscureText: true,
+                    onChanged: (value) {
+                      // password = value;
                     },
+                    decoration: InputDecoration(
+                      hintText: "Enter Password",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      LoginButton(
+                        buttonTitle: 'Login',
+                        onPressed: () {
+                          Navigator.pushNamed(context, HomeScreen.id);
+                        },
+                      ),
+                      LoginButton(
+                        buttonTitle: 'Register Here',
+                        onPressed: () {
+                          Navigator.pushNamed(context, RegistrationScreen.id);
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
