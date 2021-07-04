@@ -11,6 +11,7 @@ url = field.getvalue("url")
 imgName = field.getValue("img")
 tagName = field.getvalue("tag")
 
+fileid = url.split("/")[5]
 subprocess.run("sudo wget " + url)
 build = subprocess.getoutput(
     "sudo docker build -t {0} . && sudo docker tag {0} {1}".format(imgName, tagName))
