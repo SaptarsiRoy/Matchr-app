@@ -58,6 +58,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         10.0,
                       ),
                       child: TextField(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {
                           email = value;
@@ -76,6 +79,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextField(
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                         obscureText: true,
                         onChanged: (value) {
                           password = value;
@@ -106,7 +112,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                   isShowing = true;
                                 });
                                 final loggedUser =
-                                    await _auth.signInWithEmailAndPassword(
+                                    await _auth.createUserWithEmailAndPassword(
                                         email: email, password: password);
                                 if (loggedUser != null) {
                                   Navigator.pushNamed(context, HomeScreen.id);
