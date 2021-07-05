@@ -4,6 +4,7 @@ import 'package:matchr_docker_app/screens/log_screen.dart';
 import 'package:matchr_docker_app/components/app_drawer.dart';
 import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
 import 'package:loading_overlay/loading_overlay.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ContainerScreen extends StatefulWidget {
   static const String id = 'ContainerScreen';
@@ -15,11 +16,21 @@ class ContainerScreen extends StatefulWidget {
 class _ContainerScreenState extends State<ContainerScreen> {
   late String osName, imageName, toPort, fromPort;
   bool isShowing = false;
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(FontAwesomeIcons.signOutAlt),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+          ),
+        ],
         title: Center(
           child: Text('Create New Container'),
         ),

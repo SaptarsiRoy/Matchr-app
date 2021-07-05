@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:matchr_docker_app/components/container_button.dart';
 import 'package:matchr_docker_app/screens/about_screen.dart';
 import 'package:matchr_docker_app/screens/container_screen.dart';
@@ -6,13 +7,24 @@ import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 import 'package:matchr_docker_app/screens/log_screen.dart';
 import 'package:matchr_docker_app/components/app_drawer.dart';
 import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'HomeScreen';
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(FontAwesomeIcons.signOutAlt),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+          ),
+        ],
         title: Center(
           child: Text('Docker App'),
         ),
