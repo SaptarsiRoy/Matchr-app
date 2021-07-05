@@ -5,8 +5,13 @@ import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
 import 'package:matchr_docker_app/screens/home_screen.dart';
 import 'package:matchr_docker_app/screens/login_screen.dart';
 import 'package:matchr_docker_app/screens/registration_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
