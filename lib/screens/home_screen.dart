@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:matchr_docker_app/components/container_button.dart';
 import 'package:matchr_docker_app/screens/about_screen.dart';
 import 'package:matchr_docker_app/screens/container_screen.dart';
 import 'package:matchr_docker_app/screens/dockerfile_screen.dart';
+import 'package:matchr_docker_app/screens/log_screen.dart';
+import 'package:matchr_docker_app/components/app_drawer.dart';
+import 'package:matchr_docker_app/utilities/netwotk_helper.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String id = 'HomeScreen';
+  final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(FontAwesomeIcons.signOutAlt),
+            onPressed: () {
+              _auth.signOut();
+              Navigator.pop(context);
+            },
+          ),
+        ],
         title: Center(
           child: Text('Docker App'),
         ),
       ),
+      drawer: AppDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -54,8 +70,10 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Container(
-            child: Image.network(
-                'https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2014/05/homepage-docker-logo.png?itok=zx0e-vcP'),
+            child: Hero(
+              tag: 'logo',
+              child: Image.asset('images/docker logo.png'),
+            ),
             alignment: Alignment.topCenter,
             width: 500,
             height: 200,
@@ -68,13 +86,13 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ContainerButton(
-                buttonTitle: 'Create a Container',
+                buttonTitle: 'Create A Container',
                 onPressed: () {
                   Navigator.pushNamed(context, ContainerScreen.id);
                 },
               ),
               ContainerButton(
-                buttonTitle: 'Upload a Dockerfile',
+                buttonTitle: 'Create Cutomised Image',
                 onPressed: () {
                   Navigator.pushNamed(context, DockerfileScreen.id);
                 },
@@ -87,9 +105,22 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ContainerButton(
-                buttonTitle: 'List all containers',
-                onPressed: () {
-                  Navigator.pushNamed(context, ContainerScreen.id);
+                buttonTitle: 'List All Containers',
+                onPressed: () async {
+                  NetworkHelper networkHelper = NetworkHelper();
+                  try {
+                    var text = await networkHelper.getContainers();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LogScreen(
+                          logOutput: text,
+                        ),
+                      ),
+                    );
+                  } catch (e) {
+                    print(e);
+                  }
                 },
               ),
             ],
